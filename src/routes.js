@@ -1,10 +1,12 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import React from "react";
 import Signup from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
-import Employee from "./components/Employee/EmployeeCard";
+import Employee from "./components/Employee/Employee";
+import Chart from "./components/ChartData/Chart";
 
 const Router = () => {
+  const isLoggedIn = JSON.parse(localStorage.getItem("userLogin"));
   return (
     <>
       <Routes>
@@ -21,19 +23,33 @@ const Router = () => {
           path="/login"
           exact
           element={
-            <React.Suspense>
+            <React.Suspense fallback={<></>}>
               <Login />
             </React.Suspense>
           }
         />
-        <Route
-          path="/employee"
-          element={
-            <React.Suspense>
-              <Employee />
-            </React.Suspense>
-          }
-        />
+        {isLoggedIn ? (
+          <Route
+            path="/employee"
+            element={
+              <React.Suspense fallback={<></>}>
+                <Employee />
+              </React.Suspense>
+            }
+          />
+        ) : (
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        )}
+        {isLoggedIn && (
+          <Route
+            path="/charts/:id"
+            element={
+              <React.Suspense fallback={<></>}>
+                <Chart />
+              </React.Suspense>
+            }
+          />
+        )}
       </Routes>
     </>
   );

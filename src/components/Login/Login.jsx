@@ -10,7 +10,7 @@ import {
   CardActions,
 } from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 
 const Login = () => {
@@ -20,7 +20,6 @@ const Login = () => {
   });
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [isLoggedin, setIsLoggedin] = useState(false);
 
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -39,11 +38,12 @@ const Login = () => {
       userpassword.password === values.password
     ) {
       setSuccess(true);
+      localStorage.setItem("userLogin", true);
       navigate("/employee");
+      window.location.reload();
     } else {
       setError(true);
     }
-    console.log("email , passwd", useremail, userpassword);
   };
 
   return (
@@ -109,6 +109,10 @@ const Login = () => {
               >
                 Login
               </Button>
+              <p className={styles}>
+                Don'thave an account then please{" "}
+                <Link to="/register">Register</Link> yourself
+              </p>
             </CardActions>
           </form>
         </Card>
