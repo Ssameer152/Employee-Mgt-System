@@ -73,22 +73,23 @@ const Signup = () => {
             <CardContent>
               <Typography
                 variant="body2"
+                component={"div"}
                 sx={{ fontSize: 20, fontWeight: "bold" }}
               >
                 SIGN UP
               </Typography>
 
               {error && (
-                <Typography className={styles.error}>
+                <Typography component={"div"} className={styles.error}>
                   {"Failed to register user, email already exists"}
                 </Typography>
               )}
               {success && (
-                <Typography className={styles.success}>
+                <Typography component={"div"} className={styles.success}>
                   {"User successfully registered."}
                 </Typography>
               )}
-              <Typography variant="body2">
+              <Typography component={"div"} variant="body2">
                 <FormControl fullWidth sx={{ m: 1 }} variant="standard">
                   <br />
                   <InputLabel htmlFor="standard-adornment-username">

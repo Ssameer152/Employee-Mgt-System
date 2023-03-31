@@ -34,7 +34,9 @@ const Login = () => {
     const userpassword = users.find((usr) => usr.password);
 
     if (
+      useremail.email !== null &&
       useremail.email === values.email &&
+      userpassword.password !== null &&
       userpassword.password === values.password
     ) {
       setSuccess(true);
@@ -53,22 +55,23 @@ const Login = () => {
           <form onSubmit={handleLogin}>
             <CardContent>
               <Typography
+                component={"div"}
                 variant="body2"
                 sx={{ fontSize: 20, fontWeight: "bold" }}
               >
                 LOGIN
               </Typography>
               {error && (
-                <Typography className={styles.error}>
+                <Typography component={"div"} className={styles.error}>
                   {"Invalid username or password"}
                 </Typography>
               )}
               {success && (
-                <Typography className={styles.success}>
+                <Typography component={"div"} className={styles.success}>
                   {"successfully logged in"}
                 </Typography>
               )}
-              <Typography variant="body2">
+              <Typography component={"div"} variant="body2">
                 <FormControl fullWidth sx={{ m: 1 }} variant="standard">
                   <br />
                   <InputLabel htmlFor="standard-adornment-email">

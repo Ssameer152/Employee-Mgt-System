@@ -11,14 +11,23 @@ const EmployeeCard = ({ employee }) => {
           <Typography
             sx={{ fontSize: 16, mt: 5 }}
             color="text.primary"
+            component={"div"}
             gutterBottom
           >
             Name: {employee.name}
           </Typography>
-          <Typography sx={{ fontSize: 16 }} color="text.primary">
+          <Typography
+            component={"div"}
+            sx={{ fontSize: 16 }}
+            color="text.primary"
+          >
             Email: {employee.email}
           </Typography>
-          <Typography sx={{ fontSize: 16, mt: 2 }} color="text.primary">
+          <Typography
+            component={"div"}
+            sx={{ fontSize: 16, mt: 2 }}
+            color="text.primary"
+          >
             Phone: {employee.phone}
           </Typography>
           <Link to={`/charts/${id}`} style={{ textDecoration: "none" }}>
