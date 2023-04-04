@@ -8,17 +8,19 @@ const Employee = () => {
   const url = `https://jsonplaceholder.typicode.com/users`;
   const [employee, setEmployee] = useState([]);
 
+  const getEmployee = async () => {
+    try {
+      const response = await axios.get(url);
+      setEmployee(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    const getEmployee = () => {
-      axios
-        .get(url)
-        .then((res) => {
-          setEmployee(res.data);
-        })
-        .catch((err) => console.log(err));
-    };
     getEmployee();
-  }, [url]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
