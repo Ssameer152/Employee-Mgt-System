@@ -39,7 +39,10 @@ const Chart = () => {
       />
       <PieChartIcon
         onClick={handlePieClick}
-        style={{ cursor: "pointer", marginRight: "10px" }}
+        style={{
+          cursor: "pointer",
+          marginRight: "10px",
+        }}
       />
       <StackedLineChartIcon
         onClick={handleLineClick}

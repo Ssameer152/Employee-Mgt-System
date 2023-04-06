@@ -4,6 +4,7 @@ import Signup from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
 import Employee from "./components/Employee/Employee";
 import Chart from "./components/ChartData/Chart";
+import AddUser from "./components/User/AddUser";
 
 const Router = () => {
   const isLoggedIn = JSON.parse(localStorage.getItem("userLogin"));
@@ -46,6 +47,16 @@ const Router = () => {
             element={
               <React.Suspense fallback={<></>}>
                 <Chart />
+              </React.Suspense>
+            }
+          />
+        )}
+        {isLoggedIn && (
+          <Route
+            path="/addUser"
+            element={
+              <React.Suspense fallback={<></>}>
+                <AddUser />
               </React.Suspense>
             }
           />

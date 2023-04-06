@@ -7,10 +7,12 @@ import {
   Legend,
   Line,
 } from "recharts";
+import "./Linechart.css";
 
 const Linecharts = ({ data }) => {
   return (
     <LineChart
+      className="recharts-wrapper"
       layout="vertical"
       width={500}
       height={300}

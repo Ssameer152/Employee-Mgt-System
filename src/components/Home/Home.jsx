@@ -21,6 +21,26 @@ export default function Home() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Employee Management System
           </Typography>
+          {login && (
+            <Button sx={{ my: 2, color: "white", display: "block" }}>
+              <Link
+                to={"/addUser"}
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                Add User
+              </Link>
+            </Button>
+          )}
+          {login && (
+            <Button sx={{ my: 2, color: "white", display: "block" }}>
+              <Link
+                to={"/editUser/:id"}
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                Edit User
+              </Link>
+            </Button>
+          )}
           {!login && (
             <Button sx={{ my: 2, color: "white", display: "block" }}>
               <Link
