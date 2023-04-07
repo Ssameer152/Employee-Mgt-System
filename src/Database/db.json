@@ -1,23 +1,23 @@
 {
   "user": [
     {
-      "name": "aryan",
-      "username": "raj",
-      "email": "aryan@gmail.com",
+      "name": "John",
+      "username": "Doe",
+      "email": "jdoe@gmail.com",
       "phone": "1234567890",
       "id": 1
     },
     {
-      "name": "akash",
-      "username": "akashsingh",
-      "email": "akash@gmail.com",
+      "name": "Kevin",
+      "username": "Kevin Modronta",
+      "email": "kevinm@gmail.com",
       "phone": "98786756564",
       "id": 2
     },
     {
-      "name": "suraj",
-      "username": "suraj123",
-      "email": "suraj@gmail.com",
+      "name": "Vikram",
+      "username": "vikram123",
+      "email": "vikram@gmail.com",
       "phone": "9956976967",
       "id": 3
     },

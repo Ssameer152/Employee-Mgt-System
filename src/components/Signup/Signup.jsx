@@ -81,12 +81,12 @@ const Signup = () => {
 
               {error && (
                 <Typography component={"div"} className={styles.error}>
-                  {"Failed to register user, email already exists"}
+                  {"Failed to register employee, email already exists"}
                 </Typography>
               )}
               {success && (
                 <Typography component={"div"} className={styles.success}>
-                  {"User successfully registered."}
+                  {"Employee successfully registered."}
                 </Typography>
               )}
               <Typography component={"div"} variant="body2">

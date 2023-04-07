@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
+  Card,
   Typography,
   FormControl,
   InputLabel,
   Input,
   Box,
-  Button,
-  Card,
   CardContent,
+  Button,
 } from "@mui/material";
-import { addUser } from "../../service/api";
-import { useNavigate } from "react-router-dom";
+import { editUser, getallUsers } from "../../service/api";
+import { useNavigate, useParams } from "react-router-dom";
 import "./User.css";
 
 const initialValue = {
@@ -20,10 +20,20 @@ const initialValue = {
   phone: "",
 };
 
-const AddUser = () => {
+const EditUser = () => {
   const [user, setUser] = useState(initialValue);
-  const [success, setSuccess] = useState(false);
   const { name, username, email, phone } = user;
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    loadUserData();
+  });
+
+  const loadUserData = async () => {
+    const response = await getallUsers(id);
+    setUser(response.data);
+  };
 
   const navigate = useNavigate();
 
@@ -31,28 +41,22 @@ const AddUser = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const addUserDetails = async () => {
-    await addUser(user);
-    setSuccess(true);
+  const editUserDetails = async () => {
+    await editUser(id, user);
     navigate("/all");
   };
 
   return (
     <section className="container">
-      <Box sx={{ minWidth: 650 }}>
+      <Box my={5}>
         <Typography
           variant="body2"
           component={"div"}
           sx={{ fontSize: 20, fontWeight: "bold" }}
           mb={4}
         >
-          Add User Details
+          Update User Details
         </Typography>
-        {success && (
-          <Typography component={"div"} className="success">
-            {"User successfully registered."}
-          </Typography>
-        )}
         <Card variant="outlined" className="card">
           <CardContent>
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
@@ -94,11 +98,11 @@ const AddUser = () => {
             <Box my={3}>
               <Button
                 variant="contained"
-                onClick={() => addUserDetails()}
+                onClick={() => editUserDetails()}
                 color="primary"
                 align="center"
               >
-                Add User
+                Update User
               </Button>
               <Button
                 onClick={() => navigate("/all")}
@@ -117,4 +121,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default EditUser;

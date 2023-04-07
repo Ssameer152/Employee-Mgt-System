@@ -24,6 +24,16 @@ export default function Home() {
           {login && (
             <Button sx={{ my: 2, color: "white", display: "block" }}>
               <Link
+                to={"/employee"}
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                All Employees
+              </Link>
+            </Button>
+          )}
+          {login && (
+            <Button sx={{ my: 2, color: "white", display: "block" }}>
+              <Link
                 to={"/addUser"}
                 style={{ textDecoration: "none", color: "#fff" }}
               >
@@ -34,13 +44,14 @@ export default function Home() {
           {login && (
             <Button sx={{ my: 2, color: "white", display: "block" }}>
               <Link
-                to={"/editUser/:id"}
+                to={"/all"}
                 style={{ textDecoration: "none", color: "#fff" }}
               >
-                Edit User
+                All users
               </Link>
             </Button>
           )}
+
           {!login && (
             <Button sx={{ my: 2, color: "white", display: "block" }}>
               <Link
